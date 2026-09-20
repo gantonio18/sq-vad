@@ -49,7 +49,7 @@ pose graphs; the VLM stream needs the RGB frames and costs money.
 ```bash
 python train_eval.py --dataset ShanghaiTech --checkpoint checkpoints/ShanghaiTech_85_9.tar --device cpu
 
-export ANTHROPIC_API_KEY=sk-ant-...          # never commit a key
+export ANTHROPIC_API_KEY=sk-ant-...
 python scripts/score_vlm.py --frames_root /path/to/shanghaitech/testing/frames \
     --backend claude_sonnet --model claude-sonnet-4-5 \
     --motion_overlay none --prompt_version v2 --blind_stride 12 --other_stride 60 \
