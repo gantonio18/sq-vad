@@ -1,0 +1,72 @@
+{
+  "baseline_global": 0.717837378982489,
+  "crossfit_global": 0.7197214392349143,
+  "crossfit_delta": 0.001884060252425268,
+  "insample_global": 0.7178515217127007,
+  "insample_lambda": 0.1,
+  "boot_delta_mean": 0.0019216383586646015,
+  "boot_delta_ci95": [
+    -0.0003657185425926385,
+    0.005622011649460604
+  ],
+  "boot_excludes_zero": false,
+  "boot_p_gt0": 0.917,
+  "per_scene_wins": 4,
+  "per_scene_losses": 2,
+  "n_vlm_covered": 92043,
+  "trusted_fire_frames": 2270,
+  "fold_params": [
+    {
+      "fold": 0,
+      "trust": [
+        "vehicle",
+        "bike",
+        "cart",
+        "skateboard"
+      ],
+      "tau": 0.7,
+      "lambda": 5.0
+    },
+    {
+      "fold": 1,
+      "trust": [
+        "vehicle",
+        "bike",
+        "cart",
+        "skateboard"
+      ],
+      "tau": 0.7,
+      "lambda": 2.0
+    },
+    {
+      "fold": 2,
+      "trust": [
+        "vehicle"
+      ],
+      "tau": 0.7,
+      "lambda": 1.2
+    },
+    {
+      "fold": 3,
+      "trust": [
+        "vehicle",
+        "bike",
+        "cart",
+        "skateboard"
+      ],
+      "tau": 0.7,
+      "lambda": 5.0
+    },
+    {
+      "fold": 4,
+      "trust": [
+        "vehicle",
+        "bike",
+        "cart",
+        "skateboard"
+      ],
+      "tau": 0.7,
+      "lambda": 2.0
+    }
+  ]
+}

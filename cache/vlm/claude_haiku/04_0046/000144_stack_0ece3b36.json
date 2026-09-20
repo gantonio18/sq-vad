@@ -1,0 +1,1 @@
+{"s_vlm": 0.15, "anomaly_score": 15, "category": "other", "reason": "Color fringing artifact on right side suggests thermal or motion blur, but people visible are standing/walking normally with no vehicles or abnormal speed detected", "model": "claude-haiku-4-5"}

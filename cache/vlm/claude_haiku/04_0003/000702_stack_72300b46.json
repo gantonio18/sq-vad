@@ -1,0 +1,1 @@
+{"s_vlm": 0.15, "anomaly_score": 15, "category": "loiter", "reason": "person on left with thermal/color artifact appears stationary or slow-moving in an unusual posture; no vehicles or fast motion detected", "model": "claude-haiku-4-5"}

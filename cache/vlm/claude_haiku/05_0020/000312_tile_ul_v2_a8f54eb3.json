@@ -1,0 +1,1 @@
+{"s_vlm": 0.05, "anomaly_score": 5, "category": "none", "reason": "Only normal pedestrians visible; one person standing on right side of frame and one walking on left. No vehicles, bikes, carts, or other anomalous objects detected across entire frame including edges and background.", "model": "claude-haiku-4-5"}

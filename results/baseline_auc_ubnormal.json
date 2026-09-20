@@ -1,0 +1,13 @@
+{
+  "global_roc_auc": 0.717837378982489,
+  "n_frames": 92640,
+  "n_clips": 211,
+  "n_anomaly_frames": 49650,
+  "pct_anomaly_frames": 53.595,
+  "n_nopose_frames": 7965,
+  "pct_nopose_frames": 8.598,
+  "n_nopose_anomaly_frames": 4167,
+  "pct_of_anomalies_that_are_nopose": 8.393,
+  "checkpoint": "checkpoints/UBnormal_unsupervised_71_8.tar",
+  "seg_len": 16
+}

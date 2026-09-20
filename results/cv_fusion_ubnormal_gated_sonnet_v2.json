@@ -1,0 +1,116 @@
+{
+  "baseline": 0.717837378982489,
+  "tag": "sonnet_v2",
+  "fires_ungated": 13645,
+  "fires_gated": 5157,
+  "prec_ungated": 0.49769146207401976,
+  "prec_gated": 0.5342253248012411,
+  "ungated": {
+    "crossfit": 0.7132824835490676,
+    "delta": -0.004554895433421358,
+    "ci95": [
+      -0.014621331608819621,
+      0.004296294137603926
+    ],
+    "p_gt0": 0.164,
+    "excludes_zero": false,
+    "folds": [
+      {
+        "fold": 0,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.8,
+        "lambda": 0.8
+      },
+      {
+        "fold": 1,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.8,
+        "lambda": 0.3
+      },
+      {
+        "fold": 2,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.8,
+        "lambda": 0.8
+      },
+      {
+        "fold": 3,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.8,
+        "lambda": 0.8
+      },
+      {
+        "fold": 4,
+        "trust": [
+          "vehicle",
+          "bike",
+          "cart"
+        ],
+        "tau": 0.0,
+        "lambda": 0.0
+      }
+    ]
+  },
+  "gated": {
+    "crossfit": 0.7132909810403459,
+    "delta": -0.004546397942143066,
+    "ci95": [
+      -0.0147841187729511,
+      0.006148418748946529
+    ],
+    "p_gt0": 0.1925,
+    "excludes_zero": false,
+    "folds": [
+      {
+        "fold": 0,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.8,
+        "lambda": 0.8
+      },
+      {
+        "fold": 1,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.9,
+        "lambda": 0.8
+      },
+      {
+        "fold": 2,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.9,
+        "lambda": 1.2
+      },
+      {
+        "fold": 3,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.9,
+        "lambda": 0.8
+      },
+      {
+        "fold": 4,
+        "trust": [
+          "vehicle",
+          "bike",
+          "cart"
+        ],
+        "tau": 0.0,
+        "lambda": 0.0
+      }
+    ]
+  }
+}

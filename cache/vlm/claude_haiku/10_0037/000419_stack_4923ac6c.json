@@ -1,0 +1,1 @@
+{"s_vlm": 0.75, "anomaly_score": 75, "category": "bike", "reason": "Multiple bicycles are parked/present on the pedestrian walkway, a non-pedestrian vehicle object that does not belong in this space", "model": "claude-haiku-4-5"}

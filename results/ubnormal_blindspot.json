@@ -1,0 +1,21 @@
+{
+  "global_roc_auc": 0.717837378982489,
+  "youden_thr": 0.9971342546561754,
+  "global_recall": 0.8029607250755287,
+  "n_anomaly_frames": 49650,
+  "n_false_negatives": 9783,
+  "n_fn_pose_blind_le1": 4486,
+  "pct_fn_pose_blind_le1": 45.9,
+  "recall_by_bucket": {
+    "no-pose (0)": 0.243,
+    "low (1)": 0.723,
+    "mid (2-3)": 0.838,
+    "high (4+)": 0.89
+  },
+  "n_anom_by_bucket": {
+    "no-pose (0)": 4167,
+    "low (1)": 4815,
+    "mid (2-3)": 15796,
+    "high (4+)": 24872
+  }
+}

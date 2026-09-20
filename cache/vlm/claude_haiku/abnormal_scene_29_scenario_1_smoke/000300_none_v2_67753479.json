@@ -1,0 +1,1 @@
+{"s_vlm": 0.75, "anomaly_score": 75, "category": "vehicle", "reason": "Police vehicle is actively present on the pedestrian walkway, which is a clear non-pedestrian anomaly.", "model": "claude-haiku-4-5"}

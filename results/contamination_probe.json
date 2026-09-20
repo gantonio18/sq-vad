@@ -1,0 +1,171 @@
+{
+  "model": "claude-sonnet-4-5",
+  "n_frames": 20,
+  "named_shanghaitech": 0,
+  "named_shanghaitech_with_confidence": 0,
+  "claimed_recognition": 0,
+  "pct_correct": 0.0,
+  "est_cost_usd": 0.0588,
+  "rows": [
+    {
+      "video": "01_0014",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "overhead pedestrian scene, but no distinctive dataset markers visible"
+    },
+    {
+      "video": "01_0055",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "elevated outdoor pedestrian walkway with paved stones, but no distinctive features to identify specific dataset"
+    },
+    {
+      "video": "01_0073",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "overhead view of pedestrians on paved plaza, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "01_0138",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "aerial view of pedestrians and cyclist on paved area, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "02_0161",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "elevated surveillance-style camera of public plaza area with cyclists and pedestrians, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "03_0039",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "pedestrian crossing scene with overhead camera view, but no definitive identifying markers"
+    },
+    {
+      "video": "03_0041",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "pedestrian crossing scene with overhead view, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "04_0011",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor surveillance-style overhead view of public plaza, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "05_0018",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "surveillance camera view of campus/park pathway, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "05_0021",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor surveillance camera view of pedestrians, but no distinctive markers identifying a specific academic dataset"
+    },
+    {
+      "video": "06_0150",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor urban scene with pedestrians and storefront, no distinctive dataset markers"
+    },
+    {
+      "video": "07_0008",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "pedestrian crossing scene with surveillance-style camera angle, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "07_0009",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "pedestrian crossing scene with person running, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "08_0156",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor pedestrian scene with elevated camera view, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "08_0178",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor pedestrian plaza with modern architecture, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "09_0057",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor pedestrian scene with modern buildings, trees, and people walking - could be from multiple surveillance or pedestrian tracking datasets"
+    },
+    {
+      "video": "10_0042",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "urban plaza scene with pedestrians, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "11_0176",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "pedestrian scene with people walking on bridge, but no distinctive dataset markers visible"
+    },
+    {
+      "video": "12_0152",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "outdoor plaza scene with overhead view, but no distinctive markers to identify specific dataset"
+    },
+    {
+      "video": "12_0175",
+      "guess": "unknown",
+      "recognized": false,
+      "confidence": 0,
+      "correct": false,
+      "clues": "public plaza with pedestrians and cyclist, elevated viewpoint, but no distinctive markers to identify specific dataset"
+    }
+  ]
+}

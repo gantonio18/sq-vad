@@ -1,0 +1,1 @@
+{"s_vlm": 0.65, "anomaly_score": 65, "category": "run", "reason": "Person in green on right side of frame is clearly sprinting/running at notably higher speed than the person walking in foreground, moving faster than normal walking pace.", "model": "claude-haiku-4-5"}

@@ -1,0 +1,6 @@
+{
+  "baseline": 0.8593719603559267,
+  "oracle_global": 0.9670168365335636,
+  "oracle_delta": 0.10764487617763696,
+  "oracle_lambda": 5
+}

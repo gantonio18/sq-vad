@@ -1,0 +1,1 @@
+{"s_vlm": 0.75, "anomaly_score": 75, "category": "run", "reason": "Multiple people running with significant motion blur/ghosting visible as colored fringing artifacts across frames, indicating fast movement inconsistent with normal pedestrian walking", "model": "claude-haiku-4-5"}

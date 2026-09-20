@@ -1,0 +1,120 @@
+{
+  "baseline": 0.717837378982489,
+  "tag": "haiku_v2",
+  "fires_ungated": 10691,
+  "fires_gated": 4520,
+  "prec_ungated": 0.6504536526049949,
+  "prec_gated": 0.6951327433628318,
+  "ungated": {
+    "crossfit": 0.7349605203392813,
+    "delta": 0.01712314135679227,
+    "ci95": [
+      -0.0002497541894519866,
+      0.03826978533652879
+    ],
+    "p_gt0": 0.971,
+    "excludes_zero": false,
+    "folds": [
+      {
+        "fold": 0,
+        "trust": [
+          "vehicle",
+          "bike",
+          "cart"
+        ],
+        "tau": 0.7,
+        "lambda": 1.2
+      },
+      {
+        "fold": 1,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.7,
+        "lambda": 1.2
+      },
+      {
+        "fold": 2,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.5,
+        "lambda": 1.2
+      },
+      {
+        "fold": 3,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.7,
+        "lambda": 1.2
+      },
+      {
+        "fold": 4,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.7,
+        "lambda": 0.8
+      }
+    ]
+  },
+  "gated": {
+    "crossfit": 0.722095875126818,
+    "delta": 0.004258496144329049,
+    "ci95": [
+      -0.0055366262221268,
+      0.015909203276343296
+    ],
+    "p_gt0": 0.797,
+    "excludes_zero": false,
+    "folds": [
+      {
+        "fold": 0,
+        "trust": [
+          "vehicle",
+          "bike",
+          "cart"
+        ],
+        "tau": 0.7,
+        "lambda": 2.0
+      },
+      {
+        "fold": 1,
+        "trust": [
+          "vehicle",
+          "bike",
+          "cart"
+        ],
+        "tau": 0.7,
+        "lambda": 1.2
+      },
+      {
+        "fold": 2,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.0,
+        "lambda": 1.2
+      },
+      {
+        "fold": 3,
+        "trust": [
+          "vehicle",
+          "bike",
+          "cart"
+        ],
+        "tau": 0.7,
+        "lambda": 1.2
+      },
+      {
+        "fold": 4,
+        "trust": [
+          "vehicle"
+        ],
+        "tau": 0.9,
+        "lambda": 1.2
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+method,category,training_free,global_micro_auc,hr_auc,venue,arxiv,verified_from,note
+MPED-RNN,pose,no,73.4,75.4,CVPR 2019,1903.03295,STG-NF paper Table 1,Morais et al. skeleton trajectory RNN
+GEPC,pose,no,76.1,,CVPR 2020,1912.11850,STG-NF paper Table 1,Markovitz et al. pose-graph clustering
+MULDE (frame),holistic frame,no,81.3,,CVPR 2024,2403.14497,MULDE paper Table 2,only holistic-frame method above 80
+SSMTL,object-centric,no,82.4,,CVPR 2021,2011.07491,SSMTL++ Table 8 (micro),original paper's 90.2 is the MACRO variant; micro is 82.4
+BA-AED,object-centric,no,82.7,,TPAMI 2022,2008.12328,BA-AED Table II (micro),macro is 89.3
+SSPCAB (+Georgescu et al.),object-centric,no,83.6,,CVPR 2022,2111.09099,SSPCAB Table 3,plug-in predictive block on BA-AED
+SSMTL++v2,object-centric,no,83.8,,CVIU 2023,2207.08003,SSMTL++ Table 8,
+Jigsaw,object-centric,no,84.3,84.7,ECCV 2022,2207.10172,Jigsaw Table 1; HR from STG-NF Table 1 (Wang et al. 84.2/84.7),D&C reports it as 84.26
+AnomalyRuler,training-free VLM/LLM,yes,85.2,,ECCV 2024,2407.10299,AnomalyRuler Table 3,base variant 84.6; CogVLM-17B + GPT-4 induction + Mistral-7B deduction
+SeeKer,pose,no,85.5,86.9,ICCV 2025,2506.18368,SeeKer Table 2,causal keypoint density; AP 80.0
+STG-NF,pose,no,85.9,87.4,ICCV 2023,2211.10946,reproduced in this work (0.8594/0.8738),our frozen baseline
+AI-VAD,object-centric,no,85.9,,TMLR 2025,2212.00789,AI-VAD abstract,attribute features (velocity/pose/deep); interpretable
+DA-Flow,pose,no,86.5,87.8,arXiv 2024,2406.02976,DA-Flow Table II,dual-attention flow over skeletons
+MULDE (object),object-centric,no,86.7,,CVPR 2024,2403.14497,MULDE paper Table 1,best published single object-centric model
+Divide-and-Conquer (STG-NF+Jigsaw),pose+RGB trained fusion,no,87.7,,arXiv 2023,2309.14622,D&C Table III (87.72),sums STG-NF 85.93 + Jigsaw-with-human 84.26
+MoCoDAD,pose (HR only),no,,77.6,ICCV 2023,2307.07205,MSG-Flow Table I,HR-only protocol
+MSG-Flow,pose (HR only),no,,88.1,ICME 2026,2603.26745,MSG-Flow Table I,HR-ONLY (user list had it as global - corrected)
+Frozen VLM alone (ours; Claude Sonnet 4.5),training-free VLM,yes,70.2,,this work,,fusion_metrics.json,standalone weak ranker; routed frames only + propagation
+STG-NF + frozen VLM F2 (ours),pose+VLM training-free fusion,yes,88.7,88.5,this work,,fusion_metrics.json / cv_fusion.json,in-sample 0.8871; cross-fitted 0.8857; HR 0.8848

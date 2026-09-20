@@ -1,0 +1,62 @@
+{
+  "baseline_global": 0.717837378982489,
+  "crossfit_global": 0.7349605203392813,
+  "crossfit_delta": 0.01712314135679227,
+  "insample_global": 0.7316236498007569,
+  "insample_lambda": 0.8,
+  "boot_delta_mean": 0.01712345445424963,
+  "boot_delta_ci95": [
+    -0.0002497541894519866,
+    0.03826978533652879
+  ],
+  "boot_excludes_zero": false,
+  "boot_p_gt0": 0.971,
+  "per_scene_wins": 13,
+  "per_scene_losses": 11,
+  "n_vlm_covered": 76794,
+  "trusted_fire_frames": 10691,
+  "fold_params": [
+    {
+      "fold": 0,
+      "trust": [
+        "vehicle",
+        "bike",
+        "cart"
+      ],
+      "tau": 0.7,
+      "lambda": 1.2
+    },
+    {
+      "fold": 1,
+      "trust": [
+        "vehicle"
+      ],
+      "tau": 0.7,
+      "lambda": 1.2
+    },
+    {
+      "fold": 2,
+      "trust": [
+        "vehicle"
+      ],
+      "tau": 0.5,
+      "lambda": 1.2
+    },
+    {
+      "fold": 3,
+      "trust": [
+        "vehicle"
+      ],
+      "tau": 0.7,
+      "lambda": 1.2
+    },
+    {
+      "fold": 4,
+      "trust": [
+        "vehicle"
+      ],
+      "tau": 0.7,
+      "lambda": 0.8
+    }
+  ]
+}

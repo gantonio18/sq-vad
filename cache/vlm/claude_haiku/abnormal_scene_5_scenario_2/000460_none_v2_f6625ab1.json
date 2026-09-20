@@ -1,0 +1,1 @@
+{"s_vlm": 0.75, "anomaly_score": 75, "category": "fall", "reason": "Person lying on the floor in foreground; clear anomalous behavior on walkway", "model": "claude-haiku-4-5"}

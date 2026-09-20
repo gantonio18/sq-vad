@@ -1,0 +1,1 @@
+{"s_vlm": 0.1, "anomaly_score": 10, "category": "none", "reason": "Only a normal pedestrian walking across a zebra crossing; no vehicles, bikes, carts, or other anomalous objects detected in foreground, background, or edges.", "model": "claude-haiku-4-5"}

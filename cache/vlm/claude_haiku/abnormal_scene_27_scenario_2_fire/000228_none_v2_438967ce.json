@@ -1,0 +1,1 @@
+{"s_vlm": 0.85, "anomaly_score": 85, "category": "vehicle", "reason": "Train station platform with parked trains; not a pedestrian walkway as described in the premise", "model": "claude-haiku-4-5"}

@@ -202,3 +202,29 @@ data/ShanghaiTech/pose/
 data/UBnormal/pose/
 runs/*
 data/exp_dir/*
+
+# ---------------------------------------------------------------
+# SQ-VAD additions
+# ---------------------------------------------------------------
+# Secrets — never commit an API key. Keys come from $ANTHROPIC_API_KEY.
+*APIKey*
+*api_key*
+*.key
+.env
+.env.*
+
+# Large external assets: fetch from the dataset / upstream sources instead
+data/UBnormal/pose/
+data/ShanghaiTech/pose/
+data/exp_dir/
+datasets/
+# YOLOv8 weights (yolov8x.pt is 131 MB, over GitHub's 100 MB limit)
+*.pt
+*.mp4
+*.avi
+
+# Local scratch
+runs/
+scripts/results/
+results/_*.parquet
+env_report.txt

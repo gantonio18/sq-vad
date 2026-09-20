@@ -1,0 +1,1 @@
+{"s_vlm": 0.05, "anomaly_score": 5, "category": "none", "reason": "Multiple people walking normally across pedestrian crossing; colorful motion artifacts are image processing noise, not evidence of anomalous speed or non-pedestrian objects.", "model": "claude-haiku-4-5"}

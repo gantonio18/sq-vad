@@ -1,0 +1,1 @@
+{"s_vlm": 0.75, "anomaly_score": 75, "category": "bike", "reason": "Multiple bicycles present on the pedestrian walkway; bicycles are non-pedestrian wheeled objects and constitute clear anomalies in a campus walkway designated for foot traffic only.", "model": "claude-haiku-4-5"}

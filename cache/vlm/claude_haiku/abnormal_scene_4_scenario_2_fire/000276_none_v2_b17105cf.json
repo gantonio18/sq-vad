@@ -1,0 +1,1 @@
+{"s_vlm": 0.0, "anomaly_score": 0, "category": "none", "reason": "Image appears to be a synthetic/rendered scene with fire effects; no actual pedestrian walkway or real objects detected. If treated as a real scene, the fire would be anomalous, but this is not a genuine CCTV capture.", "model": "claude-haiku-4-5"}

@@ -1,0 +1,1 @@
+{"s_vlm": 0.05, "anomaly_score": 5, "category": "none", "reason": "overhead view shows road with vehicle in proper lane, pedestrian crossing, and buildings; no abnormal human behavior or out-of-place objects detected", "model": "claude-haiku-4-5"}

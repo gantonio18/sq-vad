@@ -1,0 +1,1 @@
+{"s_vlm": 0.65, "anomaly_score": 65, "category": "run", "reason": "person in foreground is running across a pedestrian plaza; running is anomalous in a calm public walkway area", "model": "claude-haiku-4-5"}

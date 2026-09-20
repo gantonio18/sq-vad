@@ -1,0 +1,14 @@
+{
+  "n_boot": 1000,
+  "delta_mean": 0.027757597403733323,
+  "delta_ci95": [
+    0.008968571676378195,
+    0.04920870809154299
+  ],
+  "excludes_zero": true,
+  "p_delta_gt_0": 1.0,
+  "best_stream": "s_f2",
+  "per_scene_wins": 25,
+  "per_scene_losses": 16,
+  "per_scene_total": 106
+}

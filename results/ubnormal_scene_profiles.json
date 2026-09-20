@@ -1,0 +1,234 @@
+{
+  "1": {
+    "scene_type": "pedestrian walkway/shopfront",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A pedestrian-only storefront area with shop displays, awnings, and occasional foot traffic from shoppers.",
+    "ref_clip": "normal_scene_1_scenario1_1"
+  },
+  "2": {
+    "scene_type": "street/road",
+    "vehicles_normal": true,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "Urban street intersection with residential and commercial buildings, pedestrians, and vehicle traffic through a city block.",
+    "ref_clip": "normal_scene_2_scenario_1"
+  },
+  "3": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A narrow urban alleyway or pedestrian street at night with neon signage, brick buildings, and sporadic foot traffic of people walking through.",
+    "ref_clip": "normal_scene_3_scenario_2"
+  },
+  "4": {
+    "scene_type": "indoor office/lounge space",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A modern open-plan office or corporate lounge with people sitting and standing among furniture, desks, and industrial ceiling fixtures.",
+    "ref_clip": "normal_scene_4_scenario_2"
+  },
+  "5": {
+    "scene_type": "indoor commercial/industrial space",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A large indoor facility with high ceilings and structural columns where pedestrians walk through an open, minimally furnished space.",
+    "ref_clip": "normal_scene_5_scenario_1"
+  },
+  "6": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A pedestrian walkway with occasional foot traffic, people walking or standing in small groups across a paved area adjacent to green spaces.",
+    "ref_clip": "normal_scene_6_scenario_1"
+  },
+  "7": {
+    "scene_type": "street/road",
+    "vehicles_normal": true,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "A curved urban street with pedestrian crosswalks, adjacent residential buildings, and normal foot traffic crossing the road.",
+    "ref_clip": "normal_scene_7_scenario_1"
+  },
+  "8": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "Pedestrians walking across a zebra crossing in front of storefronts, with normal foot traffic and people crossing the street.",
+    "ref_clip": "normal_scene_8_scenario_1"
+  },
+  "9": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "Pedestrians crossing at a marked zebra crossing in an urban area with storefronts and street lighting.",
+    "ref_clip": "normal_scene_9_scenario_1_fog"
+  },
+  "10": {
+    "scene_type": "beach/recreational area",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "Pedestrians walking and standing on a beach near painted blue recreational markings, with ocean and hills visible in the background.",
+    "ref_clip": "normal_scene_10_scenario_1"
+  },
+  "11": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A beach or sandy promenade with pedestrian crossings where people walk across marked zebra crossings.",
+    "ref_clip": "normal_scene_11_scenario_1"
+  },
+  "12": {
+    "scene_type": "pedestrian walkway / urban intersection",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "Urban pedestrian crossing with zebra stripes where pedestrians walk across intersections and streets in a downtown area.",
+    "ref_clip": "normal_scene_12_scenario_1"
+  },
+  "13": {
+    "scene_type": "street/road",
+    "vehicles_normal": true,
+    "bicycles_normal": true,
+    "carts_normal": true,
+    "normal_description": "A quiet urban street with brick buildings, occasional pedestrians, and empty asphalt road where vehicles are permitted.",
+    "ref_clip": "normal_scene_13_scenario_1"
+  },
+  "14": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A quiet European pedestrian street with individual people walking, standing, and moving about among historic buildings and storefronts.",
+    "ref_clip": "normal_scene_14_scenario_3"
+  },
+  "15": {
+    "scene_type": "pedestrian walkway / urban plaza",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A urban pedestrian plaza with occasional foot traffic between modern and historic buildings, with no vehicular activity.",
+    "ref_clip": "normal_scene_15_scenario_1"
+  },
+  "16": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A quiet residential pedestrian street with period architecture, potted plants, and occasional pedestrians walking through a charming urban alley.",
+    "ref_clip": "normal_scene_16_scenario_1"
+  },
+  "17": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A narrow Mediterranean-style pedestrian alley with historic architecture, decorative planters, and occasional foot traffic of pedestrians walking through.",
+    "ref_clip": "normal_scene_17_scenario_1"
+  },
+  "18": {
+    "scene_type": "pedestrian walkway / shopping street",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A pedestrian shopping street with storefronts, where people walk and browse retail shops; vehicles and bicycles are not part of normal activity in this pedestrian-only zone.",
+    "ref_clip": "normal_scene_18_scenario_2"
+  },
+  "19": {
+    "scene_type": "airport terminal",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": true,
+    "normal_description": "An indoor airport terminal with pedestrians walking through a spacious corridor with modern lighting, signage (D36 visible), and luggage carts occasionally present.",
+    "ref_clip": "normal_scene_19_scenario_1"
+  },
+  "20": {
+    "scene_type": "airport terminal",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": true,
+    "normal_description": "Indoor airport terminal with passengers moving through check-in/baggage claim areas, with luggage carts being the typical vehicle type present.",
+    "ref_clip": "normal_scene_20_scenario_3"
+  },
+  "21": {
+    "scene_type": "airport terminal baggage claim area",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": true,
+    "normal_description": "Passengers waiting at baggage claim carousels in an airport terminal, with luggage carts and airport staff present.",
+    "ref_clip": "normal_scene_21_scenario_1"
+  },
+  "22": {
+    "scene_type": "subway/train station platform",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "Pedestrians waiting and moving about on a subway platform with trains present; this is a pedestrian-only transit space.",
+    "ref_clip": "normal_scene_22_scenario_1"
+  },
+  "23": {
+    "scene_type": "street/road",
+    "vehicles_normal": true,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "Urban street with historic residential buildings, pedestrians walking, and parked vehicles along the curb.",
+    "ref_clip": "normal_scene_23_scenario_1"
+  },
+  "24": {
+    "scene_type": "public square/plaza",
+    "vehicles_normal": false,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "A grand public plaza with pedestrians, cyclists, trees, and an illuminated monument in front of a historic palace building during twilight hours.",
+    "ref_clip": "normal_scene_24_scenario_2"
+  },
+  "25": {
+    "scene_type": "pedestrian walkway",
+    "vehicles_normal": false,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "A charming historic town street with pedestrians walking through a cobblestone alley lined with traditional European architecture and storefronts.",
+    "ref_clip": "normal_scene_25_scenario_2"
+  },
+  "26": {
+    "scene_type": "transit platform",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": false,
+    "normal_description": "A train or subway platform with occasional pedestrians waiting or walking along the covered platform during daylight hours.",
+    "ref_clip": "normal_scene_26_scenario_1"
+  },
+  "27": {
+    "scene_type": "train station",
+    "vehicles_normal": false,
+    "bicycles_normal": false,
+    "carts_normal": true,
+    "normal_description": "A busy train station platform with passengers boarding and alighting from trains, luggage carts present, and normal pedestrian movement.",
+    "ref_clip": "normal_scene_27_scenario_1"
+  },
+  "28": {
+    "scene_type": "street/road",
+    "vehicles_normal": true,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "An urban street intersection with historic buildings, streetlights, and occasional pedestrians and cyclists passing through.",
+    "ref_clip": "normal_scene_28_scenario_1"
+  },
+  "29": {
+    "scene_type": "pedestrian walkway / street",
+    "vehicles_normal": false,
+    "bicycles_normal": true,
+    "carts_normal": false,
+    "normal_description": "Urban pedestrian street with occasional foot traffic and cyclists moving through a narrow alleyway between residential buildings.",
+    "ref_clip": "normal_scene_29_scenario_2"
+  }
+}
