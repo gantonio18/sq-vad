@@ -18,9 +18,11 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+import paths
+
 FUSED = "results/fused_frame_scores.parquet"
 QUERIES = "results/vlm_query_results_sonnet.parquet"
-FRAMES = "../../Datasets/shanghaitech/testing/frames"
+FRAMES = paths.SHANGHAITECH_FRAMES
 OUTDIR = "../Article/figures"
 FPS = 24.0
 TRUST = {"vehicle", "bike", "cart"}

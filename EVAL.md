@@ -1,108 +1,77 @@
-# EVAL.md — evaluation protocol (Phase 7)
+# Evaluation protocol
 
-## Metric (matches the STG-NF repo exactly)
-- **Global ROC-AUC = micro AUC**: per-frame scores are concatenated across all
-  107 test clips into one vector and a single `roc_auc_score(gt, score)` is
-  computed (`utils/scoring_utils.py::score_auc`). We reproduce this number
-  (0.85937) and use the identical procedure for every fused system, so all
-  numbers are directly comparable.
-- **HR AUC**: same, after dropping the 6 non-human-pose clips
-  `[(1,130),(1,135),(1,136),(6,144),(6,145),(12,152)]` (the `ShanghaiTech-HR`
-  protocol). Reported for every system alongside Global.
-- **micro vs macro**: the headline is micro (the repo's choice). `evaluate.py`
-  additionally reports per-video AUC (a macro view) for the per-scene
-  wins/losses count, per Noghre et al.'s critique that a single micro-AUC can
-  hide per-scene behaviour.
+What is measured, how, and which file holds each number. This matches the paper;
+where an earlier draft of this file disagreed, the paper is right.
 
-## Score processing (identical pose path; see SCORING.md)
-1. Per-frame pose score = min log-likelihood across people (`np.amin`),
-   canonicalised to `s_pose = -normality` (higher = more anomalous).
-2. No-pose frames are the `+inf`→max-normal fill in the baseline.
-3. **Fusion order:** z-normalise each stream **globally** (a monotonic transform,
-   so each stream's own AUC is unchanged and F1 at w=0 reproduces 0.85937 — this
-   is asserted in `fuse.py`), fuse the **unsmoothed** streams, then apply STG-NF's
-   iterated Gaussian smoothing (`sigma=1..6`) **once** to the fused score before
-   AUC. This mirrors the repo (smoothing is the last step before scoring).
+## Metric
 
-## Systems compared (`results/comparison.csv`, `comparison_table.png`)
-| System | Global | HR | Notes |
-|---|---|---|---|
-| STG-NF (frozen baseline) | reproduced 0.8594 | 0.8738 | anchor |
-| VLM only | z(s_vlm) smoothed | — | standalone ranker |
-| F1 late fusion (best w) | sweep w∈[0,1] | | |
-| F2 gated fusion | g=1 at no-pose, g↑ near boundary | | **primary** |
-| F3 max fusion | max(zp, zv) | | |
+- **Global ROC-AUC (micro).** Per-frame scores are concatenated across all 107
+  ShanghaiTech test clips into one vector and scored with a single
+  `roc_auc_score` (`utils/scoring_utils.py::score_auc`). We reproduce 0.85937 and
+  use the identical procedure for every fused system, so all numbers are
+  comparable.
+- **HR ROC-AUC.** The same, after dropping the six non-human-pose clips
+  `[(1,130),(1,135),(1,136),(6,144),(6,145),(12,152)]`.
+- **Micro vs macro.** The headline is micro, as in the STG-NF repository.
+  `evaluate.py` also reports per-video AUC, used for the win/loss counts.
 
-## Ablations (each a row/figure)
-- **No-pose rule on vs off** (`fuse.py --nopose_rule`): isolates the single
-  cleanest contribution (`gate_effect.png`).
-- **Fusion weight w** sweep (`auc_vs_w.png`).
-- **Strategy** F1 vs F2 vs F3 (`roc_overlay.png`).
-- **Motion overlay** none vs stack (`score_vlm.py --motion_overlay`): rerun the
-  VLM stream with `none` and re-fuse (uses cache; overlay change re-keys cache).
-- **Router coverage** full vs selective (cost vs AUC) — vary `--other_stride`.
-- (Pose aggregation max vs mean is noted as future work: the dumped per-frame
-  score is the repo's `min`-normality = `max`-anomaly; `mean` would require
-  re-dumping per-person scores.)
+## Score path (see SCORING.md)
 
-## Significance (`auc_bootstrap.png`, `bootstrap.json`)
-- **Video-level bootstrap**, 1000 resamples *of the 107 videos with replacement*;
-  for each resample compute Global AUC for baseline and for the best fused system
-  and record the delta. Report the 95% percentile CI of the delta and whether it
-  **excludes 0**. Video-level (not frame-level) resampling respects the temporal
-  correlation within a clip.
-- Also report **per-scene wins/losses**: how many of the 107 videos improved.
+1. Per-frame pose score = min log-likelihood over detected people, canonicalised
+   to `s_pose = -normality`, so higher means more anomalous.
+2. Person-free frames keep the repository's `+inf` → max-normal fill.
+3. The fused score is `s_pose_smoothed + lambda * trusted_evidence`
+   (Equation 1 in the paper); `lambda = 0` reproduces the baseline exactly, which
+   `fuse.py` asserts.
 
-## Results (headline)
+## Router
 
-VLM backend = **Claude Sonnet 4.5** (clean RGB + recall/object prompt v2).
+The **primary** router is **label-free**: its uncertain band is centred on the
+median of the smoothed pose scores, and it issues **1,509** queries (3.7% of
+frames). A label-informed variant centred on Youden's *J* of the global ROC
+selects 97.8% of the same queries (1,520) and reproduces the result to the fourth
+decimal; it is reported only to show that labels buy nothing here.
 
-| System | Global AUC | HR AUC |
+## Significance
+
+**Video-level bootstrap**, 2,000 resamples of the 107 videos with replacement, of
+the fused − baseline AUC delta. We report the 95% percentile interval, the
+fraction of positive resamples, and the per-video win/loss count. Video-level
+rather than frame-level resampling respects the temporal correlation within a
+clip.
+
+Hyperparameters (trusted set, `lambda`, confidence threshold) are chosen by
+**5-fold cross-fitting** over the videos: each fold is scored with parameters
+selected on the other four, and the cross-fitted per-frame scores are pooled into
+one AUC.
+
+## Results and the file behind each one
+
+| Claim | Value | File |
 |---|---|---|
-| STG-NF (frozen baseline) | 0.8594 | 0.8738 |
-| VLM only | 0.702 | — |
-| F1 late fusion (best w) | 0.8807 | 0.8828 |
-| **F2 category-aware fusion (primary)** | **0.8871** (+0.0277) | 0.8848 |
-| F3 max fusion | 0.8851 | 0.8823 |
+| Frozen baseline | 0.8594 global / 0.8738 HR | `results/baseline_auc.json` |
+| **Primary: label-free router, cross-fitted** | **+0.0263**, CI [+0.0085, +0.0483], P=0.9995, 25 W / 15 L | `results/cv_fusion_labelfree.json` |
+| Label-informed variant | +0.0263, CI [+0.0084, +0.0483], 25 W / 16 L | `results/cv_fusion.json` |
+| Blind tier only | +0.0099, CI [−0.0007, +0.0269], not significant | `results/cv_fusion_blindonly.json` |
+| In-sample F1 / F2 / F3 | 0.8807 / 0.8871 / 0.8851 | `results/fusion_metrics.json` |
+| VLM alone | 0.7021 | `results/fusion_metrics.json` |
+| Oracle ceiling | 0.9670 (+0.1076) | `results/oracle_ceiling.json` |
+| Haiku, motion overlay + base prompt | +0.0075, not significant | `results/cv_fusion_v1.json` |
+| Haiku, clean RGB + object prompt | +0.0160, significant | `results/cv_fusion_v1.json` |
+| YOLOv8n / YOLOv8x | +0.0123 / +0.0129, neither significant | `results/cv_fusion_yolov8{n,x}.json` |
+| UBnormal baseline and blind spot | 0.7178; 45.9% of misses pose-blind | `results/baseline_auc_ubnormal.json`, `results/ubnormal_blindspot.json` |
+| UBnormal, fixed trusted set | +0.0171 Haiku / −0.0046 Sonnet, neither significant | `results/cv_fusion_ubnormal_{haiku,sonnet}.json` |
+| UBnormal, adaptive trusted set | +0.0244 Haiku / +0.0186 Sonnet, both significant | `scripts/adaptive_trust_probe.py` (prints; no JSON) |
 
-**Overfitting-free (5-fold cross-fitted, `cv_fusion.py`):** Global **0.8857 (+0.0263)**;
-video-bootstrap (2000×) 95% CI **[+0.0084, +0.0483] — excludes 0 (significant)**;
-**P(Δ>0)=0.9995**; per-scene 25 wins / 16 losses; clean 50/50 held-out split +0.0352.
-HR also improves (0.8738→0.8848), so the VLM helps beyond the non-pose subset.
+## Ablations
 
-### Decisive ablations (cross-fitted Δ Global)
-| VLM config | Δ Global | significant? |
-|---|---|---|
-| Haiku, motion-stack overlay + base prompt (v1) | +0.0075 | no (CI incl. 0) |
-| Haiku, clean RGB + recall/object prompt (v2) | +0.0160 | yes (P=0.993) |
-| Haiku v2 + region-crop tiles (naive) | +0.0121 | no (false distant-bikes) |
-| **Sonnet, clean RGB + prompt v2** | **+0.0263** | **yes (P=0.9995)** |
-
-### Router-leakage check (`ablation_blind_only.py`, `ablation_labelfree_router.py`)
-
-The deployed router's UNCERTAIN band is centred on Youden's J (computed from
-test GT). Two cache-only ablations bound the impact:
-
-| Router variant | Δ Global (cross-fit) | 95% CI | significant? |
-|---|---|---|---|
-| Blind tier only (strictest, 970 queries) | +0.0099 | [−0.0007, +0.0269] | no (borderline) |
-| **Fully label-free** (median-centred band, 1509/1520 queries) | **+0.0264** | [+0.0085, +0.0483] | **yes (P=0.9995)** |
-
-Replacing Youden's J with the label-free score **median** keeps 97.8% of the
-uncertain queries and reproduces the headline delta — the result does not
-depend on label-informed routing. The blind-only variant shows the uncertain
-tier does contribute (~60% of trusted evidence lives outside blind windows).
-
-Three levers mattered, in order: (1) **frame encoding** — the motion-stack overlay
-*ghosted* moving vehicles so the VLM called them "empty"; clean RGB + a
-recall-leaning, object-scanning prompt doubled the gain and crossed significance.
-(2) **model capability** — Sonnet lifts rescue-target recall 29%→40% at equal/
-better precision, again ~doubling the gain. (3) Region-crop and "more frames" did
-NOT help (oracle shows coverage already sufficient; zoom adds false distant-bike
-detections). Throughout, the binding constraint was VLM **recall** on the rescue
-anomalies (Haiku labeled 64% "none"), not coverage or fusion math.
+Each is a row or a figure, all reading cached artefacts only: no-pose rule on/off
+(`fuse.py --nopose_rule`), the fusion-weight sweep, F1 vs F2 vs F3, frame encoding
+(clean RGB vs motion overlay), region-crop tiles, router coverage, and the
+label-free vs label-informed router.
 
 ## Reproducibility
-- `make_figs.py` regenerates every figure/table from `results/*.parquet` alone —
-  no VLM re-query, no flow re-run (brief §8). VLM calls are cached under
-  `cache/vlm/` keyed by `(backend, video_id, frame_idx, overlay, image-hash)`.
+
+`python reproduce.py all` regenerates every figure and table from
+`results/*.parquet` and `cache/vlm/*.jsonl`. No VLM is re-queried, the flow is not
+re-run, and no API key is needed.

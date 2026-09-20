@@ -27,7 +27,9 @@ from tqdm import tqdm
 
 from vlm_client import VLMClient
 
-DR = "C:/Users/GANTONIO/Desktop/Tese/Datasets/UBnormal"
+import paths
+
+DR = paths.UBNORMAL_ROOT
 TRAIN_POSE = "data/UBnormal/pose/train"           # normal-only training clips
 VAL_POSE = "data/UBnormal/pose/validation"
 GT_ROOT = "data/UBnormal/gt"

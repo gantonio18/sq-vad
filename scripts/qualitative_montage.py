@@ -10,7 +10,9 @@ import os
 import cv2
 import numpy as np
 
-FRAMES = "C:/Users/GANTONIO/Desktop/Tese/Datasets/shanghaitech/testing/frames"
+import paths
+
+FRAMES = paths.SHANGHAITECH_FRAMES
 OUT = "../Article/figures/qualitative_examples.png"
 
 # (video, frame, top-tag, pose-verdict, vlm-verdict, kind)

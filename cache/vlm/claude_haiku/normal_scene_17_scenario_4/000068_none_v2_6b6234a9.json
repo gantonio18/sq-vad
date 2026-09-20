@@ -1,1 +1,0 @@
-{"s_vlm": 0.1, "anomaly_score": 10, "category": "none", "reason": "Only normal pedestrians walking in the alley; no vehicles, bikes, carts, or other anomalous objects detected in foreground, middle distance, or background.", "model": "claude-haiku-4-5"}

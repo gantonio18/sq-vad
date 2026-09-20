@@ -1,1 +1,0 @@
-{"s_vlm": 0.95, "anomaly_score": 95, "category": "vehicle", "reason": "empty street shows this is a road for vehicles, not a pedestrian walkway", "model": "claude-sonnet-4-5"}

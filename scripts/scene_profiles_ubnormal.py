@@ -28,7 +28,9 @@ sys.path.insert(0, os.path.join(REPO, "scripts"))
 
 from vlm_client import VLMClient  # reuse key resolution + pricing
 
-DATASET_ROOT = "C:/Users/GANTONIO/Desktop/Tese/Datasets/UBnormal"
+import paths
+
+DATASET_ROOT = paths.UBNORMAL_ROOT
 TRAIN_POSE = "data/UBnormal/pose/train"          # normal-only training clips
 OUT = "results/ubnormal_scene_profiles.json"
 N_REF_FRAMES = 3

@@ -2,7 +2,7 @@
 
 score_vlm_ubnormal.py re-decodes ~3k mp4 frames just to look up cached answers,
 which is slow. The cache path already encodes everything we need:
-  cache/vlm/<backend>/<video_id>/<frame:06d>_<overlay>_<promptver>_<hash>.json
+  cache/vlm/<backend>.jsonl, keyed <video_id>/<frame:06d>_<overlay>_<promptver>_<hash>
 so we can harvest the per-query table directly and re-propagate, with no video I/O
 and no API calls.
 
@@ -18,6 +18,7 @@ import argparse
 import numpy as np
 import pandas as pd
 
+import vlm_cache
 from score_vlm_ubnormal import build_worklist_labelfree
 from score_vlm import propagate
 
@@ -26,29 +27,14 @@ FN_RE = re.compile(r"^(\d{6})_(\w+?)_(v\d)_([0-9a-f]+)\.json$")
 
 
 def harvest(backend, prompt_version, overlay="none"):
-    root = os.path.join("cache", "vlm", backend)
     rows = []
-    for vdir in sorted(glob.glob(os.path.join(root, "*"))):
-        if not os.path.isdir(vdir):
-            continue
-        vid = os.path.basename(vdir)
+    for vid, frame_idx, _ov, _pv, rec in vlm_cache.entries(
+            "cache/vlm", backend, prompt_version=prompt_version, overlay=overlay):
         if "scene_" not in vid:          # skip ShanghaiTech-style ids
             continue
-        for fp in glob.glob(os.path.join(vdir, "*.json")):
-            m = FN_RE.match(os.path.basename(fp))
-            if not m:
-                continue
-            frame_idx, ov, pv, _ = m.groups()
-            if ov != overlay or pv != prompt_version:
-                continue
-            try:
-                with open(fp) as f:
-                    rec = json.load(f)
-            except Exception:
-                continue
-            rows.append({"video_id": vid, "frame_idx": int(frame_idx),
-                         "s_vlm": rec.get("s_vlm"), "category": rec.get("category"),
-                         "reason": rec.get("reason")})
+        rows.append({"video_id": vid, "frame_idx": frame_idx,
+                     "s_vlm": rec.get("s_vlm"), "category": rec.get("category"),
+                     "reason": rec.get("reason")})
     return pd.DataFrame(rows)
 
 

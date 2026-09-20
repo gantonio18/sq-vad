@@ -1,1 +1,0 @@
-{"s_vlm": 0.6, "anomaly_score": 60, "category": "run", "reason": "Person in foreground is running, not walking normally as expected for pedestrian walkway.", "model": "claude-haiku-4-5"}

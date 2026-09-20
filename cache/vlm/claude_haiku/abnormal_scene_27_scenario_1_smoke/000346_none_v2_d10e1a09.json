@@ -1,1 +1,0 @@
-{"s_vlm": 0.95, "anomaly_score": 95, "category": "vehicle", "reason": "Trains are vehicles on the walkway; person lying on ground in foreground is also anomalous behavior (fall/lying down).", "model": "claude-haiku-4-5"}

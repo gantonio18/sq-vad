@@ -1,1 +1,0 @@
-{"s_vlm": 0.95, "anomaly_score": 95, "category": "vehicle, fall", "reason": "Trains are vehicles on the walkway (not a pedestrian area) and a person is lying on the ground, both major anomalies.", "model": "claude-haiku-4-5"}

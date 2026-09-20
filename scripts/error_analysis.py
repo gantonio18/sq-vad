@@ -20,8 +20,10 @@ import cv2
 
 from common import official_frame_table, youden_threshold, auc
 
+import paths
+
 PARQUET = "results/stgnf_frame_scores.parquet"
-FRAMES_ROOT = "../../Datasets/shanghaitech/testing/frames"   # relative to repo root
+FRAMES_ROOT = paths.SHANGHAITECH_FRAMES
 OUT = "results/figs/error_analysis"
 MD = "error_analysis.md"
 

@@ -27,14 +27,22 @@ pip install -r requirements.txt
 ## Reproduce the results
 
 No API key, GPU or dataset needed: the per-frame score tables (`results/`) and the
-cached VLM responses (`cache/vlm/`) are committed. Run from the repository root.
+cached VLM responses (`cache/vlm/*.jsonl`) are committed. Run from the repository
+root.
 
 ```bash
-python scripts/make_figs.py                  # every figure and table
-python scripts/ablation_labelfree_router.py  # the headline: +0.0263, CI [+0.0085,+0.0483]
-python scripts/oracle_ceiling.py             # oracle 0.967 -> headroom is VLM recall
-python scripts/compare_detector_vlm.py       # frozen YOLOv8 instead of the VLM
-python scripts/blindspot_ubnormal.py         # blind spot transfers to UBnormal
+python reproduce.py all
+```
+
+`python reproduce.py --list` shows the eleven steps; each can be run on its own,
+for example `python reproduce.py main figures`. The ones worth knowing:
+
+```bash
+python reproduce.py main       # the headline: +0.0263, CI [+0.0085,+0.0483]
+python reproduce.py oracle     # oracle 0.967 -> the headroom is VLM recall
+python reproduce.py detector   # frozen YOLOv8 instead of the VLM
+python reproduce.py ubnormal   # the blind spot transfers, more strongly
+python reproduce.py figures    # every figure and table
 ```
 
 `results/cv_fusion_labelfree.json` backs the paper's primary system (label-free
@@ -61,9 +69,13 @@ Those flags are the published configuration; the script defaults are the earlier
 Haiku run. Responses are cached, so re-running an unchanged configuration costs
 nothing.
 
-**Caveats.** A few scripts that read raw imagery still have an absolute dataset path
-at the top of the file — edit it before running them. `cv_fusion.py` overwrites
-`results/cv_fusion.json` unless you pass `--out`.
+Scripts that read raw imagery take their dataset locations from the environment,
+`SHANGHAITECH_FRAMES` and `UBNORMAL_ROOT`; copy [.env.example](.env.example) and
+fill it in. The API key is read from `ANTHROPIC_API_KEY` and nowhere else — never
+commit one.
+
+**One caveat:** `cv_fusion.py` overwrites `results/cv_fusion.json` unless you pass
+`--out`, so always pass it when running an alternative evidence stream.
 
 ## License
 

@@ -1,1 +1,0 @@
-{"s_vlm": 0.85, "anomaly_score": 85, "category": "vehicle", "reason": "trains are vehicles on the walkway; bench is a fixed structure but trains are clear anomalies for a pedestrian-only campus walkway", "model": "claude-haiku-4-5"}

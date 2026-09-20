@@ -11,8 +11,9 @@ Robustness rules (from the brief §9):
     then return s_vlm = NaN (caller falls back to s_pose). Never crash the run.
   - track token usage + $ cost.
 
-API key resolution order: $ANTHROPIC_API_KEY, else --api_key_file, else the
-known thesis key file. The key is never logged or written to the cache.
+API key: read from $ANTHROPIC_API_KEY, or from --api_key_file if given. The key is
+never logged or written to the cache. Verdicts are cached in one JSONL file per
+backend (see vlm_cache.py).
 """
 import os
 import io
@@ -24,8 +25,9 @@ import hashlib
 import numpy as np
 import cv2
 
+import vlm_cache
+
 DEFAULT_MODEL = "claude-haiku-4-5"
-DEFAULT_KEY_FILE = "../../STG-NF-modified_v2/data/APIKey.txt"
 
 # public pricing ($ per token), selected by model name
 PRICE_IN = 1.0 / 1_000_000   # default = Haiku 4.5
@@ -253,17 +255,19 @@ class VLMClient:
         self.n_cache_hits = 0
         self._client = None
         self._api_key_file = api_key_file
+        self._cache_index = None
 
     # ---- key + lazy client ----
     def _get_key(self):
         k = os.environ.get("ANTHROPIC_API_KEY")
         if k:
             return k.strip()
-        for path in [self._api_key_file, DEFAULT_KEY_FILE]:
-            if path and os.path.exists(path):
-                with open(path) as f:
-                    return f.read().strip()
-        raise RuntimeError("No Anthropic API key (set $ANTHROPIC_API_KEY or pass --api_key_file).")
+        if self._api_key_file and os.path.exists(self._api_key_file):
+            with open(self._api_key_file) as f:
+                return f.read().strip()
+        raise RuntimeError(
+            "No Anthropic API key. Set the ANTHROPIC_API_KEY environment variable "
+            "(preferred) or pass --api_key_file. Never commit a key to the repository.")
 
     def _client_obj(self):
         if self._client is None:
@@ -272,14 +276,18 @@ class VLMClient:
         return self._client
 
     # ---- cache ----
-    def _cache_path(self, video_id, frame_idx, overlay_mode, img_b64):
+    def _cache_key(self, video_id, frame_idx, overlay_mode, img_b64):
         # key on prompt version + a short hash of the actual image, so a prompt
         # OR overlay change re-queries instead of returning a stale answer
         h = hashlib.sha1(img_b64.encode()).hexdigest()[:8]
-        d = os.path.join(self.cache_root, self.backend, video_id)
-        os.makedirs(d, exist_ok=True)
-        return os.path.join(d, "{:06d}_{}_{}_{}.json".format(
-            int(frame_idx), overlay_mode, self.prompt_version, h))
+        return "{}/{:06d}_{}_{}_{}".format(
+            video_id, int(frame_idx), overlay_mode, self.prompt_version, h)
+
+    def _index(self):
+        """Lazily load this backend's cache (see scripts/vlm_cache.py)."""
+        if self._cache_index is None:
+            self._cache_index = vlm_cache.load(self.cache_root, self.backend)
+        return self._cache_index
 
     # ---- image encode ----
     def _encode(self, img_bgr):
@@ -294,10 +302,10 @@ class VLMClient:
     def score(self, img_bgr, video_id, frame_idx, overlay_mode="none"):
         """Return dict: {s_vlm, anomaly_score, category, reason, from_cache, error}."""
         img_b64 = self._encode(img_bgr)
-        cpath = self._cache_path(video_id, frame_idx, overlay_mode, img_b64)
-        if os.path.exists(cpath):
-            with open(cpath) as f:
-                rec = json.load(f)
+        ckey = self._cache_key(video_id, frame_idx, overlay_mode, img_b64)
+        hit = self._index().get(ckey)
+        if hit is not None:
+            rec = dict(hit)
             rec["from_cache"] = True
             rec.setdefault("error", None)
             self.n_cache_hits += 1
@@ -318,9 +326,10 @@ class VLMClient:
             self.tokens_out += usage[1]
         # only cache successful parses (so a transient failure can be retried later)
         if parsed is not None:
-            with open(cpath, "w") as f:
-                json.dump({k: rec[k] for k in
-                           ["s_vlm", "anomaly_score", "category", "reason", "model"]}, f)
+            keep = {k: rec[k] for k in
+                    ["s_vlm", "anomaly_score", "category", "reason", "model"]}
+            vlm_cache.append(self.cache_root, self.backend, ckey, keep)
+            self._index()[ckey] = keep
         return rec
 
     def _call_with_retries(self, img_b64):

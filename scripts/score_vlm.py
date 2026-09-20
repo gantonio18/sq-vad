@@ -26,7 +26,9 @@ from tqdm import tqdm
 import router
 from vlm_client import VLMClient
 
-FRAMES_ROOT = "../../Datasets/shanghaitech/testing/frames"
+import paths
+
+FRAMES_ROOT = paths.SHANGHAITECH_FRAMES
 OUT_FRAME = "results/vlm_frame_scores.parquet"
 OUT_QUERY = "results/vlm_query_results.parquet"
 

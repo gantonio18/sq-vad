@@ -1,1 +1,0 @@
-{"s_vlm": 0.95, "anomaly_score": 95, "category": "vehicle", "reason": "trains are vehicles not allowed on pedestrian walkway; this appears to be a train station platform but trains are major anomalies in a campus pedestrian context", "model": "claude-haiku-4-5"}

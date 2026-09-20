@@ -21,7 +21,9 @@ from common import official_frame_table
 from vlm_client import VLMClient
 from score_vlm import propagate
 
-DATASET_ROOT = "C:/Users/GANTONIO/Desktop/Tese/Datasets/UBnormal"
+import paths
+
+DATASET_ROOT = paths.UBNORMAL_ROOT
 PARQUET = "results/stgnf_frame_scores_ubnormal.parquet"
 OUT_QUERY = "results/vlm_query_results_ubnormal.parquet"
 OUT_FRAME = "results/vlm_frame_scores_ubnormal.parquet"

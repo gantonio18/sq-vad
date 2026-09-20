@@ -24,7 +24,9 @@ os.chdir(REPO)
 sys.path.insert(0, os.path.join(REPO, "scripts"))
 from vlm_client import VLMClient
 
-FRAMES = "C:/Users/GANTONIO/Desktop/Tese/Datasets/shanghaitech/testing/frames"
+import paths
+
+FRAMES = paths.SHANGHAITECH_FRAMES
 
 SYSTEM = (
     "You are shown a single frame from a publicly available academic video "

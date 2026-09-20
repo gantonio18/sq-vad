@@ -228,3 +228,17 @@ runs/
 scripts/results/
 results/_*.parquet
 env_report.txt
+
+# Regenerable or diagnostic outputs (recreate with: python reproduce.py figures)
+results/comparison.csv
+results/devset_*.parquet
+results/vlm_frame_scores_v3b.parquet
+results/figs/vlm/v2_still_missed.png
+results/figs/vlm/missed_none_rescues.png
+results/figs/error_analysis/fn_gallery/
+
+# Per-file VLM cache (superseded by cache/vlm/<backend>.jsonl)
+cache/vlm/*/
+
+# local environment
+.env

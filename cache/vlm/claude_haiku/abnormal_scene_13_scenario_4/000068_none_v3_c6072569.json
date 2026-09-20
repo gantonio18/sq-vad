@@ -1,1 +1,0 @@
-{"s_vlm": 0.3, "anomaly_score": 30, "category": "run", "reason": "Person in foreground appears to be running down the street; in a road/mixed-traffic area this is mildly unusual but not definitively anomalous without context of panic or collision.", "model": "claude-haiku-4-5"}

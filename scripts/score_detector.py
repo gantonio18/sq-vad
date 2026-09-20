@@ -22,7 +22,9 @@ import pandas as pd
 
 import score_vlm  # reuse propagate() so the windowing is identical
 
-FRAMES_ROOT = r"C:\Users\GANTONIO\Desktop\Tese\Datasets\shanghaitech\testing\frames"
+import paths
+
+FRAMES_ROOT = paths.SHANGHAITECH_FRAMES
 
 # COCO class name -> our category vocabulary. "cart" has NO COCO class, which is
 # itself part of the finding; skateboard is included so the detector is offered
